@@ -1,16 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { addTodo } from "../store/actions";
 
-const TodoInput = () => {
+const TodoInput = ({ addTodo }) => {
+  const [text, setText] = useState("");
+
+  const handleAdd = () => {
+    addTodo(text);
+    setText("");
+  };
+
   return (
     <div className='form'>
       <input
         type='text'
         className='form__input'
         placeholder='Type anything...'
+        onChange={(e) => setText(e.target.value)}
+        value={text}
       />
-      <button>+</button>
+      <button onClick={handleAdd}>+</button>
     </div>
   );
 };
 
-export default TodoInput;
+const mapDispatchToProps = {
+  addTodo,
+};
+
+export default connect(null, mapDispatchToProps)(TodoInput);

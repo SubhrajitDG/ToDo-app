@@ -1,7 +1,7 @@
 import React from "react";
 import { Check, Cross } from "../images/svg";
 
-const TodoItem = () => {
+const TodoItem = ({ item }) => {
   return (
     <div className='todo-item'>
       <div className='label'>
@@ -12,7 +12,7 @@ const TodoItem = () => {
             {/* <Check /> */}
           </label>
         </div>
-        <h3>task 1</h3>
+        <h3>{item.todoName}</h3>
         <div style={{ display: "none" }} className='editForm'>
           <input type='text' className='form__input' placeholder='Edit...' />
           <button>&#10003;</button>
