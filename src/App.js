@@ -5,18 +5,11 @@ import TodoList from "./components/TodoList";
 import "./index.css";
 import { connect } from "react-redux";
 import { useEffect } from "react";
-import { loadState } from "./store/actions";
 
-function App({ darkTheme, loadState }) {
+function App({ darkTheme }) {
   useEffect(() => {
-    const storedData = localStorage.getItem("storeData");
-    if (storedData !== null) {
-      loadState(JSON.parse(storedData).data);
-    }
     document.body.style.backgroundColor = darkTheme ? "#25273c" : "#E4EBF5";
-  }, [darkTheme, loadState]);
-
-  // console.log(JSON.parse(localStorage.getItem("storeData")));
+  }, [darkTheme]);
 
   return (
     <div
@@ -41,8 +34,4 @@ const mapStateToProps = (state) => ({
   darkTheme: state.data.darkTheme,
 });
 
-const mapDispatchToProps = {
-  loadState,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, null)(App);

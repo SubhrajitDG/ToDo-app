@@ -1,6 +1,5 @@
 import { combineReducers } from "redux";
 import {
-  LOAD_STATE,
   ADD_TODO,
   EDIT_TODO,
   DELETE_TODO,
@@ -18,10 +17,6 @@ const intitialState = {
 
 const todoReducer = (state = intitialState, action) => {
   switch (action.type) {
-    case LOAD_STATE:
-      return {
-        ...action.payload.data,
-      };
     case ADD_TODO:
       return {
         ...state,
