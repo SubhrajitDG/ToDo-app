@@ -3,7 +3,7 @@ import { Cross } from "../images/svg";
 import { connect } from "react-redux";
 import { deleteTodo, completeTodo, editTodo } from "../store/actions";
 
-const TodoItem = ({ item, deleteTodo, completeTodo, editTodo }) => {
+const TodoItem = ({ item, deleteTodo, completeTodo, editTodo, darkTheme }) => {
   const [editActive, setEditActive] = useState(false);
   const [editText, setEditText] = useState(item.todoName);
 
@@ -31,7 +31,12 @@ const TodoItem = ({ item, deleteTodo, completeTodo, editTodo }) => {
         <h3
           style={{
             textDecoration: item.completed ? "line-through" : null,
-            color: item.completed ? "rgb(177, 178, 187)" : null,
+            color:
+              item.completed && darkTheme
+                ? "#474e62"
+                : item.completed
+                ? "rgb(177, 178, 187)"
+                : null,
           }}
           onClick={() => setEditActive(true)}
         >
@@ -58,10 +63,14 @@ const TodoItem = ({ item, deleteTodo, completeTodo, editTodo }) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  darkTheme: state.data.darkTheme,
+});
+
 const mapDispatchToProps = {
   deleteTodo,
   completeTodo,
   editTodo,
 };
 
-export default connect(null, mapDispatchToProps)(TodoItem);
+export default connect(mapStateToProps, mapDispatchToProps)(TodoItem);

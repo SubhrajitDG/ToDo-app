@@ -4,6 +4,7 @@ export const DELETE_TODO = "DELETE_TODO";
 export const COMPLETE_TODO = "COMPLETE_TODO";
 export const CLEAR_COMPLETED = "CLEAR_COMPLETED";
 export const TOGGLE_FILTER = "TOGGLE_FILTER";
+export const TOGGLE_THEME = "TOGGLE_THEME";
 
 export const addTodo = (text) => ({
   type: ADD_TODO,
@@ -40,4 +41,7 @@ export const toggleFilter = (text) => ({
   payload: {
     text,
   },
+});
+export const toggleTheme = () => ({
+  type: TOGGLE_THEME,
 });

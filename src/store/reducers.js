@@ -6,11 +6,13 @@ import {
   COMPLETE_TODO,
   CLEAR_COMPLETED,
   TOGGLE_FILTER,
+  TOGGLE_THEME,
 } from "./actions";
 
 const intitialState = {
   todos: [],
   activeFilter: "all",
+  darkTheme: false,
 };
 
 const todoReducer = (state = intitialState, action) => {
@@ -52,6 +54,11 @@ const todoReducer = (state = intitialState, action) => {
       return {
         ...state,
         activeFilter: action.payload.text,
+      };
+    case TOGGLE_THEME:
+      return {
+        ...state,
+        darkTheme: !state.darkTheme,
       };
 
     default:

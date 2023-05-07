@@ -8,15 +8,15 @@ body {
 }
 
 :root {
-  --primary-light: #8abdff;
   --primary: #6d5dfc;
-  --primary-dark: #5b0eeb;
-
   --white: #FFFFFF;
   --greyLight-1: #E4EBF5;
   --greyLight-2: #c8d0e7;
-  --greyLight-3: #bec8e4;
   --greyDark: #9baacf;
+  --primary-dark: #6d5dfc;
+  --greyLight-1-dark: #1f2133;
+  --greyLight-2-dark: #2b2d45;
+  --greyDark-dark: #25273c;
 }
 
 *,
@@ -27,19 +27,11 @@ body {
   box-sizing: border-box;
 }
 
-html {
-  box-sizing: border-box;
-  background: var(--greyLight-1);
-}
-
 .wrapper {
   display: flex;
   justify-content: center;
   width: 100%;
   height: 310px;
-  background: url(./images/bg-desktop-light.jpg) no-repeat;
-  background-position: center;
-  background-size: cover;
   padding: 0 20px;
 }
 
@@ -70,8 +62,8 @@ html {
   display: flex;
 }
 
-.form input,
-.editForm input {
+.wrapper .form input,
+.wrapper .editForm input {
   width: calc(100% - 50px);
   height: 60px;
   border: none;
@@ -87,9 +79,18 @@ html {
   outline: none;
 }
 
-.form input::placeholder,
-.editForm input::placeholder {
+.wrapper .form input::placeholder,
+.wrapper .editForm input::placeholder {
   color: #888fa3;
+}
+
+.wrapper.dark .form input,
+.wrapper.dark .editForm input {
+  box-shadow: inset .2rem .2rem .5rem var(--greyLight-1-dark),
+    inset -.2rem -.2rem .5rem var(--greyLight-2-dark);
+  ;
+  background: var(--greyDark-dark);
+  color: #707a96;
 }
 
 .form input:focus,
@@ -97,7 +98,7 @@ html {
   box-shadow: none;
 }
 
-.form button {
+.wrapper .form button {
   width: 50px;
   height: 60px;
   background: var(--greyLight-1);
@@ -108,13 +109,22 @@ html {
   border: none;
 }
 
+.wrapper.dark .form button {
+  background: var(--greyDark-dark);
+}
+
 .form button svg {
   transform: rotate(45deg);
 }
 
-.form button:active {
+.wrapper .form button:active {
   box-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
     inset -.2rem -.2rem .5rem var(--white);
+}
+
+.wrapper.dark .form button:active {
+  box-shadow: inset .2rem .2rem .5rem var(--greyLight-1-dark),
+    inset -.2rem -.2rem .5rem var(--greyLight-2-dark);
 }
 
 .list {
@@ -123,7 +133,7 @@ html {
   overflow: hidden;
 }
 
-.list .todo-item {
+.wrapper .list .todo-item {
   display: flex;
   position: relative;
   justify-content: space-between;
@@ -136,7 +146,14 @@ html {
     inset -.2rem -.2rem .5rem var(--white);
 }
 
-.list .todo-item:hover {
+.wrapper.dark .list .todo-item {
+  background-color: var(--greyLight-2-dark);
+  box-shadow: inset .2rem .2rem .5rem var(--greyLight-1-dark),
+    inset -.2rem -.2rem .5rem var(--greyLight-2-dark);
+}
+
+.list .todo-item:hover,
+.wrapper.dark .list .todo-item:hover {
   box-shadow: none;
 }
 
@@ -151,9 +168,14 @@ html {
   display: none;
 }
 
-.list .todo-item .label .checkbox input:checked~label {
+.wrapper .list .todo-item .label .checkbox input:checked~label {
   box-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
     inset -.2rem -.2rem .5rem var(--white);
+}
+
+.wrapper.dark .list .todo-item .label .checkbox input:checked~label {
+  box-shadow: inset .2rem .2rem .5rem var(--greyLight-1-dark),
+    inset -.2rem -.2rem .5rem var(--greyLight-2-dark);
 }
 
 .list .todo-item .label .checkbox input:checked~label i {
@@ -167,7 +189,7 @@ html {
   justify-content: center;
 }
 
-.list .todo-item .label .checkbox label {
+.wrapper .list .todo-item .label .checkbox label {
   box-shadow: .3rem .3rem .6rem var(--greyLight-2),
     -.2rem -.2rem .5rem var(--white);
   cursor: pointer;
@@ -178,6 +200,11 @@ html {
   border-radius: 5px;
   width: 30px;
   height: 30px;
+}
+
+.wrapper.dark .list .todo-item .label .checkbox label {
+  box-shadow: .3rem .3rem .6rem var(--greyLight-1-dark),
+    -.2rem -.2rem .5rem var(--greyLight-2-dark);
 }
 
 .list .todo-item .label .checkbox label i {
@@ -206,7 +233,7 @@ html {
   cursor: pointer;
 }
 
-.list .todo-item .icon__home {
+.wrapper .list .todo-item .icon__home {
   width: 40px;
   min-width: 40px;
   height: 40px;
@@ -219,22 +246,29 @@ html {
   cursor: pointer;
   color: var(--greyDark);
   transition: all .5s ease;
-
 }
 
-.list .todo-item .icon__home:active {
+.wrapper.dark .list .todo-item .icon__home {
+  box-shadow: .3rem .3rem .6rem var(--greyLight-1-dark),
+    -.2rem -.2rem .5rem var(--greyLight-2-dark);
+}
+
+.wrapper .list .todo-item .icon__home:active {
   box-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
     inset -.2rem -.2rem .5rem var(--white);
   color: var(--primary);
 }
 
-
+.wrapper.dark .list .todo-item .icon__home:active {
+  box-shadow: inset .2rem .2rem .5rem var(--greyLight-1-dark),
+    inset -.2rem -.2rem .5rem var(--greyLight-2-dark);
+}
 
 .list .todo-item:hover button {
   display: block;
 }
 
-.editForm {
+.wrapper .editForm {
   width: 96.5%;
   display: flex;
   position: absolute;
@@ -248,6 +282,12 @@ html {
     -.2rem -.2rem .5rem var(--white);
 }
 
+.wrapper.dark .editForm {
+  background-color: var(--greyDark-dark);
+  box-shadow: .3rem .3rem .6rem var(--greyLight-1-dark),
+    -.2rem -.2rem .5rem var(--greyLight-2-dark);
+}
+
 .editForm input {
   border-radius: 10px;
   height: 45px;
@@ -258,15 +298,21 @@ html {
   font-size: 20px;
   cursor: pointer;
   width: 45px;
+  color: var(--greyDark);
 }
 
-.editForm button:active {
+.wrapper .editForm button:active {
   border-radius: 10px 10px 10px 10px;
   box-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
     inset -.2rem -.2rem .5rem var(--white);
 }
 
-.filters {
+.wrapper.dark .editForm button:active {
+  box-shadow: inset .2rem .2rem .5rem var(--greyLight-1-dark),
+    inset -.2rem -.2rem .5rem var(--greyLight-2-dark);
+}
+
+.wrapper .filters {
   position: relative;
   display: flex;
   justify-content: space-around;
@@ -275,6 +321,10 @@ html {
   background-color: var(--greyLight-1);
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+}
+
+.wrapper.dark .filters {
+  background-color: var(--greyDark-dark);
 }
 
 .filters>p {
@@ -286,13 +336,18 @@ html {
   color: red;
 }
 
-.segmented-control {
+.wrapper .segmented-control {
   box-shadow: .3rem .3rem .6rem var(--greyLight-2),
     -.2rem -.2rem .5rem var(--white);
   border-radius: 10px;
   display: flex;
   align-items: center;
   position: relative;
+}
+
+.wrapper.dark .segmented-control {
+  box-shadow: .3rem .3rem .6rem var(--greyLight-1-dark),
+    -.2rem -.2rem .5rem var(--greyLight-2-dark);
 }
 
 .segmented-control input {
@@ -326,7 +381,7 @@ html {
 }
 
 
-.segmented-control__color {
+.wrapper .segmented-control__color {
   position: absolute;
   height: 35px;
   margin-left: .3rem;
@@ -334,6 +389,11 @@ html {
   box-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
     inset -.2rem -.2rem .5rem var(--white);
   pointer-events: none;
+}
+
+.wrapper.dark .segmented-control__color {
+  box-shadow: inset .2rem .2rem .5rem var(--greyLight-1-dark),
+    inset -.2rem -.2rem .5rem var(--greyLight-2-dark);
 }
 
 
