@@ -6,7 +6,8 @@ import { addTodo } from "../store/actions";
 const TodoInput = ({ addTodo }) => {
   const [text, setText] = useState("");
 
-  const handleAdd = () => {
+  const handleAdd = (e) => {
+    e.preventDefault();
     if (text !== "") {
       addTodo(text);
       setText("");
@@ -14,7 +15,7 @@ const TodoInput = ({ addTodo }) => {
   };
 
   return (
-    <div className='form'>
+    <form className='form' onSubmit={(e) => handleAdd(e)}>
       <input
         type='text'
         className='form__input'
@@ -22,10 +23,10 @@ const TodoInput = ({ addTodo }) => {
         onChange={(e) => setText(e.target.value)}
         value={text}
       />
-      <button onClick={handleAdd}>
+      <button type='submit'>
         <Cross />
       </button>
-    </div>
+    </form>
   );
 };
 
