@@ -416,13 +416,17 @@ body {
 }
 
 @media screen and (max-width:576px) {
-  .filters {
+  .wrapper .filters {
     height: 60px;
   }
 
-  .segmented-control {
+  .wrapper .segmented-control {
     position: absolute;
     bottom: -60px;
     background-color: var(--greyLight-1);
+  }
+
+  .wrapper.dark .segmented-control {
+    background-color: var(--greyDark-dark);
   }
 }
