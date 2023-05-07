@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Check, Cross } from "../images/svg";
+import { Cross } from "../images/svg";
 import { connect } from "react-redux";
 import { deleteTodo, completeTodo, editTodo } from "../store/actions";
 
@@ -26,7 +26,6 @@ const TodoItem = ({ item, deleteTodo, completeTodo, editTodo }) => {
           />
           <label htmlFor={`checkbox${item.id}`}>
             <i>&#10003;</i>
-            {/* <Check /> */}
           </label>
         </div>
         <h3
