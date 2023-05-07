@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Cross } from "../images/svg";
+import { Cross } from "../svg";
 import { addTodo } from "../store/actions";
 
 const TodoInput = ({ addTodo }) => {

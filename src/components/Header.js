@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Moon, Sun } from "../images/svg";
+import { Moon, Sun } from "../svg";
 import { toggleTheme } from "../store/actions";
 
 const Header = ({ darkTheme, toggleTheme }) => {

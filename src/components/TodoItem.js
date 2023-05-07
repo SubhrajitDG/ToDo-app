@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Cross } from "../images/svg";
+import { Cross } from "../svg";
 import { connect } from "react-redux";
 import { deleteTodo, completeTodo, editTodo } from "../store/actions";
 
