@@ -40,6 +40,7 @@ html {
   background: url(./images/bg-desktop-light.jpg) no-repeat;
   background-position: center;
   background-size: cover;
+  padding: 0 20px;
 }
 
 .components {
@@ -115,13 +116,6 @@ html {
   box-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
     inset -.2rem -.2rem .5rem var(--white);
 }
-
-/* .list {
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
-  box-shadow: .3rem .3rem .6rem var(--greyLight-2),
-    -.2rem -.2rem .5rem var(--white);
-} */
 
 .list {
   border-top-left-radius: 10px;
@@ -273,6 +267,7 @@ html {
 }
 
 .filters {
+  position: relative;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -358,4 +353,16 @@ html {
   width: 110px;
   transform: translateX(140px);
   transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+@media screen and (max-width:576px) {
+  .filters {
+    height: 60px;
+  }
+
+  .segmented-control {
+    position: absolute;
+    bottom: -60px;
+    background-color: var(--greyLight-1);
+  }
 }
