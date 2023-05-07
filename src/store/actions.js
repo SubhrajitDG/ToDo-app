@@ -1,3 +1,4 @@
+export const LOAD_STATE = "LOAD_STATE";
 export const ADD_TODO = "ADD_TODO";
 export const EDIT_TODO = "EDIT_TODO";
 export const DELETE_TODO = "DELETE_TODO";
@@ -6,6 +7,12 @@ export const CLEAR_COMPLETED = "CLEAR_COMPLETED";
 export const TOGGLE_FILTER = "TOGGLE_FILTER";
 export const TOGGLE_THEME = "TOGGLE_THEME";
 
+export const loadState = (data) => ({
+  type: LOAD_STATE,
+  payload: {
+    data,
+  },
+});
 export const addTodo = (text) => ({
   type: ADD_TODO,
   payload: {
