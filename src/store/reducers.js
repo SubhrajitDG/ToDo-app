@@ -1,8 +1,16 @@
 import { combineReducers } from "redux";
-import { ADD_TODO, EDIT_TODO, DELETE_TODO, COMPLETE_TODO } from "./actions";
+import {
+  ADD_TODO,
+  EDIT_TODO,
+  DELETE_TODO,
+  COMPLETE_TODO,
+  CLEAR_COMPLETED,
+  TOGGLE_FILTER,
+} from "./actions";
 
 const intitialState = {
   todos: [],
+  activeFilter: "all",
 };
 
 const todoReducer = (state = intitialState, action) => {
@@ -34,6 +42,16 @@ const todoReducer = (state = intitialState, action) => {
       return {
         ...state,
         todos: state.todos.filter((item) => item.id !== action.payload.id),
+      };
+    case CLEAR_COMPLETED:
+      return {
+        ...state,
+        todos: state.todos.filter((item) => item.completed === false),
+      };
+    case TOGGLE_FILTER:
+      return {
+        ...state,
+        activeFilter: action.payload.text,
       };
 
     default:

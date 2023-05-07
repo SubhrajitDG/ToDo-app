@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { Cross } from "../images/svg";
 import { addTodo } from "../store/actions";
 
 const TodoInput = ({ addTodo }) => {
   const [text, setText] = useState("");
 
   const handleAdd = () => {
-    addTodo(text);
-    setText("");
+    if (text !== "") {
+      addTodo(text);
+      setText("");
+    }
   };
 
   return (
@@ -19,7 +22,9 @@ const TodoInput = ({ addTodo }) => {
         onChange={(e) => setText(e.target.value)}
         value={text}
       />
-      <button onClick={handleAdd}>+</button>
+      <button onClick={handleAdd}>
+        <Cross />
+      </button>
     </div>
   );
 };

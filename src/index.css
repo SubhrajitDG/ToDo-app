@@ -66,6 +66,7 @@ html {
 
 .form {
   margin: 30px 0 20px 0;
+  display: flex;
 }
 
 .form input,
@@ -98,13 +99,16 @@ html {
 .form button {
   width: 50px;
   height: 60px;
-  font-size: 14px;
   background: var(--greyLight-1);
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   cursor: pointer;
   transition: .2s ease;
   border: none;
+}
+
+.form button svg {
+  transform: rotate(45deg);
 }
 
 .form button:active {
@@ -129,7 +133,8 @@ html {
   display: flex;
   position: relative;
   justify-content: space-between;
-  height: 70px;
+  min-height: 70px;
+  gap: 50px;
   align-items: center;
   background-color: var(--greyLight-1);
   padding: 0 20px 0 15px;
@@ -196,23 +201,57 @@ html {
   color: #707a96;
   font-size: 18px;
   font-weight: 500;
+  overflow-wrap: anywhere;
+  margin: 10px 0;
 }
 
 .list .todo-item button {
-  display: none;
+  display: block;
   background: none;
   border: none;
   cursor: pointer;
 }
+
+.list .todo-item .icon__home {
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: .3rem .3rem .6rem var(--greyLight-2),
+    -.2rem -.2rem .5rem var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: var(--greyDark);
+  transition: all .5s ease;
+
+}
+
+.list .todo-item .icon__home:active {
+  box-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
+    inset -.2rem -.2rem .5rem var(--white);
+  color: var(--primary);
+}
+
+
 
 .list .todo-item:hover button {
   display: block;
 }
 
 .editForm {
-  width: 75%;
+  width: 96.5%;
   display: flex;
-  gap: 20px;
+  position: absolute;
+  z-index: 1;
+  right: 10px;
+  gap: 5px;
+  background-color: var(--greyLight-1);
+  border-radius: 10px;
+  padding: 5px 10px;
+  box-shadow: .3rem .3rem .6rem var(--greyLight-2),
+    -.2rem -.2rem .5rem var(--white);
 }
 
 .editForm input {
@@ -224,6 +263,13 @@ html {
   display: block !important;
   font-size: 20px;
   cursor: pointer;
+  width: 45px;
+}
+
+.editForm button:active {
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
+    inset -.2rem -.2rem .5rem var(--white);
 }
 
 .filters {

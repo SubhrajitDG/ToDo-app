@@ -1,28 +1,68 @@
-import React from "react";
+import React, { useState } from "react";
 import { Check, Cross } from "../images/svg";
+import { connect } from "react-redux";
+import { deleteTodo, completeTodo, editTodo } from "../store/actions";
 
-const TodoItem = ({ item }) => {
+const TodoItem = ({ item, deleteTodo, completeTodo, editTodo }) => {
+  const [editActive, setEditActive] = useState(false);
+  const [editText, setEditText] = useState(item.todoName);
+
+  const handleEdit = () => {
+    if (editText !== "") {
+      editTodo(item.id, editText);
+      setEditActive(false);
+    }
+  };
+
   return (
     <div className='todo-item'>
       <div className='label'>
         <div className='checkbox'>
-          <input id='checkbox-1' type='checkbox' />
-          <label htmlFor='checkbox-1'>
+          <input
+            id={`checkbox${item.id}`}
+            type='checkbox'
+            checked={item.completed}
+            onChange={() => completeTodo(item.id)}
+          />
+          <label htmlFor={`checkbox${item.id}`}>
             <i>&#10003;</i>
             {/* <Check /> */}
           </label>
         </div>
-        <h3>{item.todoName}</h3>
-        <div style={{ display: "none" }} className='editForm'>
-          <input type='text' className='form__input' placeholder='Edit...' />
-          <button>&#10003;</button>
+        <h3
+          style={{
+            textDecoration: item.completed ? "line-through" : null,
+            color: item.completed ? "rgb(177, 178, 187)" : null,
+          }}
+          onClick={() => setEditActive(true)}
+        >
+          {item.todoName}
+        </h3>
+        <div
+          style={{ display: editActive ? "flex" : "none" }}
+          className='editForm'
+        >
+          <input
+            type='text'
+            className='form__input'
+            placeholder='Edit...'
+            value={editText}
+            onChange={(e) => setEditText(e.target.value)}
+          />
+          <button onClick={handleEdit}>&#10003;</button>
         </div>
       </div>
-      <button>
+      <div className='icon__home' onClick={() => deleteTodo(item.id)}>
         <Cross />
-      </button>
+      </div>
     </div>
   );
 };
 
-export default TodoItem;
+const mapDispatchToProps = {
+  deleteTodo,
+  completeTodo,
+  editTodo,
+};
+
+export default connect(null, mapDispatchToProps)(TodoItem);
